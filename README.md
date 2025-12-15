@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# App Taller - Gestión de Órdenes de Reparación
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Esta aplicación simula la gestión de órdenes de reparación para un taller automotriz.  
+Permite a **taller** y **cliente** interactuar con las órdenes siguiendo reglas de negocio estrictas: diagnóstico, autorización, reautorización, reparación y entrega.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Funcionalidades principales
 
-## React Compiler
+- Gestión completa de órdenes: creación, edición de servicios, cambio de estado.
+- Flujo de estados de la orden: `CREATED → DIAGNOSED → AUTHORIZED → IN_PROGRESS → COMPLETED → DELIVERED`.
+- Manejo de errores de negocio:
+  - Intentos de transiciones inválidas generan errores.
+  - Bloqueo de acciones tras cancelación o reautorización necesaria.
+- Persistencia usando `localStorage`.
+- Vista diferenciada para **taller** y **cliente**.
+- Pruebas unitarias con **Vitest** que validan todos los flujos y reglas de negocio.
+- 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Diseño y arquitectura
 
-## Expanding the ESLint configuration
+Estados de orden (OrderStatus): controlan el flujo completo de una orden.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Reglas de negocio (repairOrderRules.ts):
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+diagnoseOrder: diagnosticar solo si el estado es CREATED.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+authorizeOrder: autorizar solo si hay servicios y estado DIAGNOSED.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+checkOvercost / reauthorizeOrder: control de sobrecostos y reautorización.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+startRepair, completeRepair, deliverOrder: manejo de flujo de reparación.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+cancelOrder: bloquea todas las acciones posteriores.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+canModifyServices: define si se pueden editar servicios según el estado.
+
+Persistencia: todo se guarda en localStorage para mantener estado tras recarga.
+
+Pruebas unitarias: validan flujos normales, errores de secuencia y bloqueo tras cancelación.
+
+Estructura de carpetas
+src/
+├─ components/      # Componentes React
+├─ domain/          # Definición de tipos y estados
+├─ hooks/           # Hooks de manejo de órdenes
+├─ mocks/           # Datos de ejemplo
+├─ pages/           # Vistas de Taller y Cliente
+├─ storage/         # Funciones de persistencia
+├─ utils/           # Funciones auxiliares
+└─ tests/           # Pruebas unitarias Vitest
+
+Observaciones
+
+El login es simulado y asigna el primer cliente de los mocks si se ingresa como cliente.
+
+La aplicación es responsive y funciona en dispositivos móviles y desktop.
+
+Todos los flujos de órdenes están cubiertos en pruebas unitarias (src/tests/tests.test.ts).
+
+
+## Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd nombre-del-proyecto
+
+Instalar dependencias:
+npm install
+
+Para iniciar la aplicación en modo desarrollo:
+npm run dev
+
+Para correr las pruebas unitarias:
+npm run test
