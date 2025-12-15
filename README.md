@@ -15,23 +15,7 @@ Permite a **taller** y **cliente** interactuar con las órdenes siguiendo reglas
 - Persistencia usando `localStorage`.
 - Vista diferenciada para **taller** y **cliente**.
 - Pruebas unitarias con **Vitest** que validan todos los flujos y reglas de negocio.
-
-## Instalación
-
-1. Clonar el repositorio:
-
-```bash
-git clone <URL_DEL_REPOSITORIO>
-cd nombre-del-proyecto
-
-Instalar dependencias:
-npm install
-
-Para iniciar la aplicación en modo desarrollo:
-npm run dev
-
-Para correr las pruebas unitarias:
-npm run test
+- 
 
 Diseño y arquitectura
 
@@ -73,3 +57,21 @@ El login es simulado y asigna el primer cliente de los mocks si se ingresa como 
 La aplicación es responsive y funciona en dispositivos móviles y desktop.
 
 Todos los flujos de órdenes están cubiertos en pruebas unitarias (src/tests/tests.test.ts).
+
+
+## Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd nombre-del-proyecto
+
+Instalar dependencias:
+npm install
+
+Para iniciar la aplicación en modo desarrollo:
+npm run dev
+
+Para correr las pruebas unitarias:
+npm run test
