@@ -7,7 +7,7 @@ import type { RepairOrder } from "../../domain/repairOrder";
 import { useRepairOrders } from "../../hooks/useRepairOrders";
 import { getVehicles } from "../../storage/vehicles";
 
-const SolicitarReparacionPage = () => {
+const RequestRepairOrder = () => {
   const navigate = useNavigate();
   const { addOrder } = useRepairOrders();
   const [vehicleId, setVehicleId] = useState("");
@@ -97,4 +97,4 @@ const SolicitarReparacionPage = () => {
   );
 };
 
-export default SolicitarReparacionPage;
+export default RequestRepairOrder;

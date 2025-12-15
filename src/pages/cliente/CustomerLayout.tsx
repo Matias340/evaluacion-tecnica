@@ -1,9 +1,9 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import OrdenDetalleClientePage from "./OrdenDetalleClientePage";
-import OrdenesClientePage from "./OrdenesClientePage";
-import SolicitarReparacionPage from "./SolicitarReparacionPage";
+import OrdenCustomerDetailsPage from "./OrderCustomerDetailsPage";
+import OrderCustomersPage from "./OrderCustomerPage";
+import RequestRepairOrder from "./RequestRepairOrder";
 
-const ClienteLayout = () => {
+const CustomerLayout = () => {
   return (
     <>
       <header className="p-4 shadow-md bg-white sticky top-0 z-10">
@@ -24,15 +24,15 @@ const ClienteLayout = () => {
         <Routes>
           <Route path="/" element={<Navigate to="ordenes" replace />} />
 
-          <Route path="ordenes" element={<OrdenesClientePage />} />
+          <Route path="ordenes" element={<OrderCustomersPage />} />
 
-          <Route path="ordenes/:id" element={<OrdenDetalleClientePage />} />
+          <Route path="ordenes/:id" element={<OrdenCustomerDetailsPage />} />
 
-          <Route path="nueva" element={<SolicitarReparacionPage />} />
+          <Route path="nueva" element={<RequestRepairOrder />} />
         </Routes>
       </main>
     </>
   );
 };
 
-export default ClienteLayout;
+export default CustomerLayout;

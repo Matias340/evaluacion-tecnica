@@ -5,7 +5,7 @@ import { OrderStatus } from "../../domain/orderStatus";
 import { useRepairOrders } from "../../hooks/useRepairOrders";
 import { getVehicles } from "../../storage/vehicles";
 
-const OrdenesClientesPage = () => {
+const OrderCustomersPage = () => {
   const navigate = useNavigate();
   const { orders } = useRepairOrders();
   const [search, setSearch] = useState("");
@@ -77,4 +77,4 @@ const OrdenesClientesPage = () => {
   );
 };
 
-export default OrdenesClientesPage;
+export default OrderCustomersPage;

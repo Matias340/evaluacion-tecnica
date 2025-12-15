@@ -2,10 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { mockCustomers } from "./mocks/customers";
 import { mockVehicles } from "./mocks/vehicles";
-import ClienteLayout from "./pages/cliente/ClienteLayout";
+import CustomerLayout from "./pages/cliente/CustomerLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import TallerLayout from "./pages/taller/TallerLayout";
+import WorkShopLayout from "./pages/taller/WorkShopLayout";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { getCustomers, saveCustomers } from "./storage/customers";
 import { getVehicles, saveVehicles } from "./storage/vehicles";
@@ -24,7 +24,7 @@ function App() {
             path="/taller/*"
             element={
               <ProtectedRoute allowedRoles={["TALLER"]}>
-                <TallerLayout />
+                <WorkShopLayout />
               </ProtectedRoute>
             }
           />
@@ -33,7 +33,7 @@ function App() {
             path="/cliente/*"
             element={
               <ProtectedRoute allowedRoles={["CLIENTE"]}>
-                <ClienteLayout />
+                <CustomerLayout />
               </ProtectedRoute>
             }
           />

@@ -7,7 +7,7 @@ import { addCustomer } from "../../storage/customers";
 import { getRepairOrders, saveRepairOrders } from "../../storage/repairOrders";
 import { getVehicles, saveVehicles } from "../../storage/vehicles";
 
-const NuevaOrdenTallerPage = () => {
+const NewOrderWorkShop = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -92,4 +92,4 @@ const NuevaOrdenTallerPage = () => {
   );
 };
 
-export default NuevaOrdenTallerPage;
+export default NewOrderWorkShop;

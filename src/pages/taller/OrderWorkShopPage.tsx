@@ -7,7 +7,7 @@ import { useRepairOrders } from "../../hooks/useRepairOrders";
 import { getCustomerById } from "../../storage/customers";
 import { getVehicleById } from "../../storage/vehicles";
 
-const OrdenesTallerPage = () => {
+const OrderWorkShopPage = () => {
   const { orders } = useRepairOrders();
   const navigate = useNavigate();
 
@@ -95,4 +95,4 @@ const OrdenesTallerPage = () => {
   );
 };
 
-export default OrdenesTallerPage;
+export default OrderWorkShopPage;

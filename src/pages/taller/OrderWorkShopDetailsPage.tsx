@@ -8,7 +8,7 @@ import { useRepairOrders } from "../../hooks/useRepairOrders";
 import { getCustomers } from "../../storage/customers";
 import { getVehicles } from "../../storage/vehicles";
 
-const OrdenDetalleTallerPage = () => {
+const OrderWorkShopDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [showAddService, setShowAddService] = useState(false);
@@ -319,4 +319,4 @@ const OrdenDetalleTallerPage = () => {
   );
 };
 
-export default OrdenDetalleTallerPage;
+export default OrderWorkShopDetailsPage;

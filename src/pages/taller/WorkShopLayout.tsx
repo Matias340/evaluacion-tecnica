@@ -1,9 +1,9 @@
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import NuevaOrdenTallerPage from "./NuevaOrdenTallerPage";
-import OrdenDetalleTallerPage from "./OrdenDetalleTallerPage";
-import OrdenesTallerPage from "./OrdenesTallerPage";
+import NewOrderWorkShop from "./NewOrderWorkShop";
+import OrderWorkShopDetailsPage from "./OrderWorkShopDetailsPage";
+import OrderWorkShopPage from "./OrderWorkShopPage";
 
-const TallerLayout = () => {
+const WorkShopLayout = () => {
   return (
     <>
       <header className="p-4 shadow-md bg-white sticky top-0 z-10">
@@ -23,13 +23,13 @@ const TallerLayout = () => {
       <main className="p-6 bg-white min-h-[calc(100vh-64px)]">
         <Routes>
           <Route path="/" element={<Navigate to="ordenes" replace />} />
-          <Route path="ordenes" element={<OrdenesTallerPage />} />
-          <Route path="ordenes/:id" element={<OrdenDetalleTallerPage />} />
-          <Route path="nueva" element={<NuevaOrdenTallerPage />} />
+          <Route path="ordenes" element={<OrderWorkShopPage />} />
+          <Route path="ordenes/:id" element={<OrderWorkShopDetailsPage />} />
+          <Route path="nueva" element={<NewOrderWorkShop />} />
         </Routes>
       </main>
     </>
   );
 };
 
-export default TallerLayout;
+export default WorkShopLayout;

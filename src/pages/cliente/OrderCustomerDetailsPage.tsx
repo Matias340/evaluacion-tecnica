@@ -4,7 +4,7 @@ import { OrderStatus } from "../../domain/orderStatus";
 import { useRepairOrders } from "../../hooks/useRepairOrders";
 import { getVehicles } from "../../storage/vehicles";
 
-const OrdenDetalleClientePage = () => {
+const OrdenCustomerDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { orders, authorize, reauthorize, cancel } = useRepairOrders();
@@ -77,17 +77,26 @@ const OrdenDetalleClientePage = () => {
 
       <section className="border border-gray-100 shadow-md rounded p-3 flex gap-2 flex-wrap">
         {canAccept && (
-          <button onClick={handleAccept} className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-pointer">
+          <button
+            onClick={handleAccept}
+            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-pointer"
+          >
             Aceptar propuesta
           </button>
         )}
         {canReauthorize && (
-          <button onClick={handleReauthorize} className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-pointer">
+          <button
+            onClick={handleReauthorize}
+            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 cursor-pointer"
+          >
             Aceptar reautorización
           </button>
         )}
         {(canAccept || canReauthorize) && (
-          <button onClick={handleReject} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer">
+          <button
+            onClick={handleReject}
+            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer"
+          >
             Rechazar / Solicitar cambios
           </button>
         )}
@@ -107,4 +116,4 @@ const OrdenDetalleClientePage = () => {
   );
 };
 
-export default OrdenDetalleClientePage;
+export default OrdenCustomerDetailsPage;
